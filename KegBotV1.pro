@@ -30,12 +30,14 @@ LIBS += -L/usr/local/lib -lwiringPi
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
+        mainwindow.cpp \
+    logutils.cpp
 
 
 HEADERS  += mainwindow.h\
     ds1820.h \
-    OneWire.h
+    OneWire.h \
+    logutils.h
 
 
 FORMS    += mainwindow.ui

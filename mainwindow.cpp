@@ -77,11 +77,11 @@ void Thermo () {
         }
  else
  {
-  qDebug() << "Couldn't open the w1 devices directory";
+  printf("Couldn't open the w1 devices directory");
   return; //return 1;
  }
 
-        // Assemble path to OneWire device
+ // Assemble path to OneWire device
  sprintf(devPath, "%s/%s/w1_slave", path, dev);
  // Read temp continuously
  // Opening the device's file triggers new reading
@@ -109,7 +109,10 @@ void Thermo () {
 
 void Write_Data()
 {
-//OPEN DATA FILE IN OUR APPLICAITONS DIRECTORY OR CREATE IT IF IT DOESN'T EXIST
+    qDebug()<< "Pints poured : " << pints_poured;
+    qDebug()<< "Ozs poured : " << ozs_poured;
+
+    //OPEN DATA FILE IN OUR APPLICAITONS DIRECTORY OR CREATE IT IF IT DOESN'T EXIST
     FILE *file1;
     unsigned char file_data[5];
     const char *filename1 = "kegbot.dat";
@@ -133,13 +136,13 @@ void Write_Data()
     else
     {
         //----- FILE NOT FOUND -----
-        qDebug() << "file not found";
+        printf("file not found");
 
         //Write new file
         file1 = fopen(filename1, "wb");
         if (file1)
         {
-            qDebug() << "Writing new file";
+            printf("Writing new file");
             file_data[0] = pints_poured;
             file_data[1] = ozs_poured;
             file_data[2] = pints_left;
@@ -169,11 +172,16 @@ void Read_Data()
         fread(&file_data[0], sizeof(unsigned char), 5, file1);
 
         //qDebug() << "File opened, some byte values: %i %i %i %i\n", file_data[0], file_data[1], file_data[2], file_data[3]);
-        qDebug() << file_data[0];
-        qDebug() << file_data[1];
-        qDebug() << file_data[2];
-        qDebug() << file_data[3];
-        qDebug() << file_data[4];
+//        qDebug() << file_data[0];
+//        qDebug() << file_data[1];
+//        qDebug() << file_data[2];
+//        qDebug() << file_data[3];
+//        qDebug() << file_data[4];
+        printf( "%i \n", file_data[0]);
+        printf( "%i \n", file_data[1]);
+        printf( "%i \n", file_data[2]);
+        printf( "%i \n", file_data[3]);
+        printf( "%i \n", file_data[4]);
 
         pints_poured = file_data[0];
         ozs_poured = file_data[1];
@@ -187,7 +195,7 @@ void Read_Data()
         else
         {
             //----- FILE NOT FOUND -----
-            qDebug() << "file not found";
+            printf("file not found");
         }
 }
 
@@ -272,10 +280,12 @@ void MainWindow::update_Screen_Counters()
     ui->lcdOzsPoured->display(ozs_poured);
     ui->lcdOzsLeft->display(ozs_left);
     ui->BeerLevel->setValue(pints_left);
-    //ui->PintsPouredspinBox->setValue(pints_poured);
+    ui->PintsPouredspinBox->setValue(pints_poured);
     ui->TemplcdNumber->display(tempF);
     ui->ThislcdNumber->display(SessionPints);
     ui->SessionOzsPoured->display(SessionOzs);
+
+    ui->textBrowser->append("Pints poured : " + QString::number(pints_poured));
 }
 
 void MainWindow::on_SimPourBtn_clicked()
@@ -328,7 +338,7 @@ void MainWindow::on_ExitButton_clicked()
 void MainWindow::timerEvent(QTimerEvent *event)
 {
     //qDebug() << "Update...";
-
+    last_ozs_poured = total_ozs_poured;
     total_ozs_poured = (TickCounter / ticks_per_oz);
     pints_poured = (total_ozs_poured / oz_per_pint);
     ozs_poured = (total_ozs_poured % oz_per_pint);

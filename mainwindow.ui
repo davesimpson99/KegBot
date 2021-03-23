@@ -1339,8 +1339,8 @@ QProgressBar::chunk {
        <rect>
         <x>10</x>
         <y>20</y>
-        <width>331</width>
-        <height>281</height>
+        <width>191</width>
+        <height>351</height>
        </rect>
       </property>
       <property name="title">
@@ -1438,9 +1438,9 @@ QProgressBar::chunk {
      <widget class="QGroupBox" name="groupBox_3">
       <property name="geometry">
        <rect>
-        <x>480</x>
-        <y>30</y>
-        <width>311</width>
+        <x>640</x>
+        <y>20</y>
+        <width>151</width>
         <height>131</height>
        </rect>
       </property>
@@ -1450,9 +1450,9 @@ QProgressBar::chunk {
       <widget class="QPushButton" name="SimPourBtn">
        <property name="geometry">
         <rect>
-         <x>50</x>
+         <x>10</x>
          <y>40</y>
-         <width>221</width>
+         <width>121</width>
          <height>81</height>
         </rect>
        </property>
@@ -1464,7 +1464,7 @@ QProgressBar::chunk {
      <widget class="QPushButton" name="ExitButton">
       <property name="geometry">
        <rect>
-        <x>330</x>
+        <x>340</x>
         <y>310</y>
         <width>121</width>
         <height>71</height>
@@ -2159,11 +2159,22 @@ QProgressBar::chunk {
        <string>Select Keg Size</string>
       </property>
      </widget>
+     <widget class="QTextBrowser" name="textBrowser">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>50</y>
+        <width>371</width>
+        <height>192</height>
+       </rect>
+      </property>
+     </widget>
      <zorder>groupBox_3</zorder>
      <zorder>groupBox_2</zorder>
      <zorder>ExitButton</zorder>
      <zorder>CB_KegSelect</zorder>
      <zorder>label_14</zorder>
+     <zorder>textBrowser</zorder>
     </widget>
    </widget>
   </widget>
