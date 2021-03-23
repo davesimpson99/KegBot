@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>keg.jpg</file>
+        <file>MichUltra2.jpg</file>
+        <file>MICH-ULTRA.jpg</file>
+        <file>MICH-ULTRA2.png</file>
+        <file>../../../Downloads/Sixth-Barrel-Keg.jpg</file>
+        <file>../../../Downloads/Small-Sixth-Barrel-Keg.jpg</file>
+    </qresource>
+</RCC>
